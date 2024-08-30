@@ -1,0 +1,24 @@
+def dict_of_numbers():
+    def spell_number(n):
+        ones = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+        tens = ["", "","twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+
+        if 0 <= n <= 9:
+            return ones[n]
+        elif 10 <= n < 20:
+            return teens[n - 10]
+        elif 20 <= n < 100:
+            return tens[n // 10] + ("" if n % 10 == 0 else "-" + ones[n % 10])
+        return ""
+
+    number_dict = {i: spell_number(i) for i in range(0, 100)}
+    return number_dict
+
+if __name__ == "__main__":
+    numbers = dict_of_numbers()
+    print(numbers[2])
+    print(numbers[11])
+    print(numbers[45])
+    print(numbers[99])
+    print(numbers[10])
